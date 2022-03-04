@@ -10,9 +10,9 @@ from modules.utils import get_sorted_boxes, get_rotate_crop_image
 class PaddleOCR:
     def __init__(
         self,
-        text_det_onnx_file='models/ch_ppocr_server_v2.0_det_infer.onnx',
+        text_det_onnx_file='models/ch_PP-OCRv2_det_infer.onnx',
         text_cls_onnx_file='models/ch_ppocr_mobile_v2.0_cls_infer.onnx',
-        text_rec_onnx_file='models/ch_ppocr_server_v2.0_rec_infer.onnx',
+        text_rec_onnx_file='models/ch_PP-OCRv2_rec_infer.onnx',
         text_rec_dict_file='models/ppocr_keys_v1.txt',
         det_thresh=0.3,
         det_box_thresh=0.5,
