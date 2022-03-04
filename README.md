@@ -2,7 +2,7 @@
 ## Description
 This project includes a web-based deployment for PaddleOCR in Windows10.
 
-The application powered by ONNXRuntime instead of PaddlePaddle because ONNXRuntime gets better supported.
+The application powered by ONNXRuntime instead of PaddlePaddle because ONNXRuntime is easier to compile by pyinstaller.
 
 ## Installation
 ```bash
