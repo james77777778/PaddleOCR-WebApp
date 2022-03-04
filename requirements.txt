@@ -1,0 +1,8 @@
+opencv-python-headless
+onnxruntime==1.9.0
+jinja2
+fastapi
+uvicorn[standard]
+python-multipart
+pyclipper
+pyinstaller
