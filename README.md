@@ -4,6 +4,9 @@ This project includes a web-based deployment for PaddleOCR in Windows10.
 
 The application powered by ONNXRuntime instead of PaddlePaddle because ONNXRuntime is easier to compile by pyinstaller.
 
+## Demo
+![](docs/web.png)
+
 ## Installation
 ```bash
 # prepare conda env
@@ -44,5 +47,4 @@ You could follow the steps from PaddleOCR repo to convert your own models.
 
     Place `app.exe` with `models/` and execute it.
 
-## Demo
-![](docs/web.png)
+    Open [http://localhost:9000](http://localhost:9000).
