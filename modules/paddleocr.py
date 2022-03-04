@@ -37,7 +37,7 @@ class PaddleOCR:
 
         # text detection
         dt_boxes, elapse = self.text_detector(img)
-        logging.debug(f"dt_boxes num : {len(dt_boxes)}, elapse : {elapse}")
+        logging.info(f"det num: {len(dt_boxes)}, elapse: {elapse}")
         if dt_boxes is None:
             return None, None
 
@@ -50,12 +50,12 @@ class PaddleOCR:
             img_crop_list.append(img_crop)
 
         # text classification
-        img_crop_list, angle_list, elapse = self.text_classifier(img_crop_list)
-        logging.debug(f"cls num  : {len(img_crop_list)}, elapse : {elapse}")
+        img_crop_list, _, elapse = self.text_classifier(img_crop_list)
+        logging.info(f"cls num: {len(img_crop_list)}, elapse: {elapse}")
 
         # text recognition
         rec_res, elapse = self.text_recognizer(img_crop_list)
-        logging.debug(f"rec_res num  : {len(rec_res)}, elapse : {elapse}")
+        logging.info(f"rec num: {len(rec_res)}, elapse: {elapse}")
 
         # drop results with `self.drop_score`
         filter_boxes, filter_rec_res = [], []

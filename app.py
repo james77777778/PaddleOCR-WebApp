@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 import multiprocessing as mp
 
@@ -10,6 +11,9 @@ from fastapi.templating import Jinja2Templates
 
 from modules.paddleocr import PaddleOCR
 from modules.utils import draw_results, encode_img
+
+PORT = 9000
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
 
 
 '''
@@ -59,4 +63,6 @@ async def get_inference(img: UploadFile):
 
 if __name__ == '__main__':
     mp.freeze_support()
-    uvicorn.run(app, host='0.0.0.0', port=9000, reload=False, access_log=False, use_colors=False)
+    url = f'http://localhost:{PORT}'
+    logging.info(f'Open {url} for PaddleOCR Web Application')
+    uvicorn.run(app, host='0.0.0.0', port=PORT, reload=False, access_log=False, use_colors=False, log_level='critical')
