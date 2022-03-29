@@ -181,6 +181,13 @@ class TextDetector:
         )
         self.input_tensor_name = self.predictor.get_inputs()[0].name
 
+        # params
+        # normalize
+        shape = (1, 1, 3)
+        self._scale = np.float32(1. / 255.)
+        self._mean = np.array([0.229, 0.224, 0.225]).reshape(shape).astype('float32')
+        self._std = np.array([0.485, 0.456, 0.406]).reshape(shape).astype('float32')
+
     def _order_points_clockwise(self, pts):
         """
         reference from: https://github.com/jrosebr1/imutils/blob/master/imutils/perspective.py
@@ -235,11 +242,7 @@ class TextDetector:
         shape_list = np.array([src_h, src_w, ratio_h, ratio_w])
 
         # normalize
-        shape = (1, 1, 3)
-        scale = np.float32(1.0 / 255.0)
-        mean = np.array([0.229, 0.224, 0.225]).reshape(shape).astype('float32')
-        std = np.array([0.485, 0.456, 0.406]).reshape(shape).astype('float32')
-        img = (img.astype('float32') * scale - mean) / std
+        img = (img.astype('float32') * self.scale - self.mean) / self.std
 
         # to chw
         img = img.transpose((2, 0, 1))
